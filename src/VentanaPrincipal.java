@@ -4,6 +4,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -16,6 +19,17 @@ import javax.swing.SwingConstants;
 
 public class VentanaPrincipal {
 
+/**
+ * 
+ * {@link #inicializar()}
+ * {@code}
+ * @author Axier Gonzalez
+ * @version 1.1
+ * @since 1.1
+ * @see ControlJuego
+ * 
+ * * */
+	
 	// La ventana principal, en este caso, guarda todos los componentes:
 	JFrame ventana;
 	JPanel panelImagen;
@@ -141,6 +155,21 @@ public class VentanaPrincipal {
 			int contadori = i;
 			for (int j = 0; j < 10; j++) {
 				int contadorj = j;
+				botonesJuego[i][j].addMouseListener(new MouseAdapter() {
+					
+					@Override
+					public void mouseClicked(MouseEvent e) {
+					if(e.isMetaDown()) {
+						if(botonesJuego[contadori][contadorj].getText().equalsIgnoreCase("-")) {
+							botonesJuego[contadori][contadorj].setText("<|");
+							botonesJuego[contadori][contadorj].setForeground(Color.red);
+						}else {
+							botonesJuego[contadori][contadorj].setText("-");
+							botonesJuego[contadori][contadorj].setForeground(Color.black);
+						}
+					}
+					}
+				});
 				botonesJuego[i][j].addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -155,6 +184,7 @@ public class VentanaPrincipal {
 							break;
 						case "-1": {
 							texto.setForeground(correspondenciaColores[1]);
+							
 							mostrarFinJuego(true);
 						}
 							break;
@@ -177,11 +207,12 @@ public class VentanaPrincipal {
 						}
 							break;
 						default:
+							contador++;
 							texto.setForeground(correspondenciaColores[4]);
 						}
 						texto.setHorizontalAlignment(JLabel.CENTER);
 						panelesJuego[contadori][contadorj].add(texto);
-						if (Integer.parseInt(pantallaPuntuacion.getText()) == 79) {
+						if (Integer.parseInt(pantallaPuntuacion.getText()) == 80) {
 							mostrarFinJuego(false);
 						}
 						refrescarPantalla();
