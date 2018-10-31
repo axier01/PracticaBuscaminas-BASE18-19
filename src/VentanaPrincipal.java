@@ -16,19 +16,23 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-public class VentanaPrincipal {
-
 /**
- * 
+ * Esta clase genera la ventana del juego
  * {@link #inicializar()}
- * {@code}
- * @author Axier Gonzalez
+ * <br>
+ * {@code ventana.setVisible(true)}
+ * <br>
+ * {@code inicializarComponentes()}
+ *  <br>
+ * {@code inicializarListener()}
+ * @author Axier Gonzalez 
  * @version 1.1
  * @since 1.1
  * @see ControlJuego
- * 
- * * */
+ * */
+public class VentanaPrincipal {
+
+
 	
 	// La ventana principal, en este caso, guarda todos los componentes:
 	JFrame ventana;
